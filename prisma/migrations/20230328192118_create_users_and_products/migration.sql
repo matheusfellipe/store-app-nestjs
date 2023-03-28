@@ -49,3 +49,6 @@ CREATE UNIQUE INDEX "patients_cpf_key" ON "patients"("cpf");
 
 -- AddForeignKey
 ALTER TABLE "users" ADD CONSTRAINT "users_roleId_fkey" FOREIGN KEY ("roleId") REFERENCES "roles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AlterTable
+ ALTER TABLE "patients" RENAME TO "products";
