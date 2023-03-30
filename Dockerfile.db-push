@@ -1,0 +1,5 @@
+FROM node:18-alpine
+WORKDIR /var/app
+COPY package.json npm.* prisma ./
+RUN npm install --production=true
+CMD npm run prisma db push

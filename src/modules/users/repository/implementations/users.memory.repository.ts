@@ -1,8 +1,10 @@
 /* eslint-disable prettier/prettier */
 
+import { Injectable } from '@nestjs/common';
 import { UsersEntity } from '../../entities/users.entity';
-import { IUserRepository } from '../user.repository';
+import { IUserRepository } from '../users.repository';
 
+@Injectable()
 export class UsersMemoryRepository implements IUserRepository {
   users: UsersEntity[];
   private static instance: UsersMemoryRepository;
