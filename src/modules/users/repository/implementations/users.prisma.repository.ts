@@ -15,10 +15,4 @@ export class UsersPrismaRepository implements IUserRepository {
     });
     return user || undefined;
   }
-
-  async findById(id: string): Promise<UsersEntity> {
-    return await prismaClient.user.findFirst({
-      where: { id: id },
-    });
-  }
 }

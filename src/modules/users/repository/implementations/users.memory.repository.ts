@@ -25,16 +25,12 @@ export class UsersMemoryRepository implements IUserRepository {
     return this.users.find((user) => user.email === email);
   }
 
-  async findById(id: string): Promise<UsersEntity | null> {
-    return (
-      this.users.find((user) => {
-        user.id === id;
-      }) || null
-    );
-  }
-
   async save(data: UsersEntity): Promise<UsersEntity> {
-    this.users.push(data);
+    const { password, ...rest } = data;
+    this.users.push({
+      ...rest,
+      password,
+    });
     return data;
   }
 }
