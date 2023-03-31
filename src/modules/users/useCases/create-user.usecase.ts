@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { CreateUserDTO } from '../dto/create-user.dto';
-import { UsersMemoryRepository } from '../repository/implementations/users.memory.repository';
+// import { UsersMemoryRepository } from '../repository/implementations/users.memory.repository';
+import { UsersPrismaRepository } from '../repository/implementations/users.prisma.repository';
 
 @Injectable()
 export class CreateUserUseCase {
-  constructor(private userRepository: UsersMemoryRepository) {}
+  constructor(private userRepository: UsersPrismaRepository) {}
 
   async execute(input: CreateUserDTO) {
     const { email } = input;

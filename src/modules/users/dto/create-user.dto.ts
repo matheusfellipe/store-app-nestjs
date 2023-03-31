@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, MinLength, IsString } from 'class-validator';
 
 export class CreateUserDTO {
   @IsNotEmpty({ message: 'O nome não pode ser vazio' })
@@ -10,4 +10,7 @@ export class CreateUserDTO {
 
   @MinLength(6, { message: 'A senha precisa ter pelo menos 6 caracteres' })
   password: string;
+
+  @IsString()
+  roleId: string;
 }
