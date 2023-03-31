@@ -9,6 +9,8 @@ export class CreateUserUseCase {
   constructor(private userRepository: UsersPrismaRepository) {}
 
   async execute(input: CreateUserDTO) {
+    // eslint-disable-next-line no-console
+    console.log(input);
     const { email } = input;
     const existUser = await this.userRepository.findByEmail(email);
     if (existUser) {
