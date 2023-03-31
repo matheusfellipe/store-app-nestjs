@@ -5,7 +5,7 @@ import {
   EncryptProvider,
   GenerateHashCodeProvider,
   GenerateIdProvider,
-} from './@shared/providers';
+} from './providers';
 
 @Global()
 @Module({
