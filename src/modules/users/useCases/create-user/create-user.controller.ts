@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Post } from '@nestjs/common/decorators';
-import { CreateUserDTO } from '../dto/create-user.dto';
-import { CreateUserUseCase } from './create-user.useCase';
+import { CreateUserDTO } from '../../dto/create-user.dto';
+import { CreateUserUseCase } from './create-user.usecase';
 
 @Controller('/users')
 export class CreateUserController {
