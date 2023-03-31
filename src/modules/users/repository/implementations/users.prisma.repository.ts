@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { prismaClient } from '../../../../infra/@shared/database/prisma.config';
+import { prismaClient } from '../../../../@shared/providers/prisma-config.provider';
 import { CreateUserDTO } from '../../dto/create-user.dto';
 import { UsersEntity } from '../../entities/users.entity';
 import { IUserRepository } from '../users.repository';
