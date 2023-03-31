@@ -8,14 +8,15 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  password  String
-  role      Role     @relation(fields: [roleId], references: [id])
-  roleId    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String         @id @default(uuid())
+  email        String         @unique
+  name         String?
+  password     String
+  role         Role           @relation(fields: [roleId], references: [id])
+  roleId       String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  RefreshToken RefreshToken[]
 
   @@map("users")
 }
@@ -39,4 +40,14 @@ model Product {
   updatedAt   DateTime @updatedAt
 
   @@map("products")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  hash      String
+  expiresAt DateTime @default(now()) @map("expires_at")
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map(name: "refresh_tokens")
 }
