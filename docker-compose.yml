@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: .
+    container_name: store_backend
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    environment:
+      - FORCE_COLOR=1
+      - DATABASE_URL=postgresql://postgres:postgres@localhost:5432
+    depends_on:
+      - database
+      - db-push
+
+  db-push:
+    build:
+      context: .
+      dockerfile: Dockerfile.db-push
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@localhost:5432
+    depends_on:
+      - database
+
+  database:
+    image: postgres
+    container_name: store-api_db
+    ports:
+      - 5431:5432
+    environment:
+      - POSTGRES_DB=store
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
