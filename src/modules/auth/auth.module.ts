@@ -13,10 +13,14 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtRefreshTokenStrategy } from './strategies/jwt-refresh-token.strategy';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { PassportModule } from '@nestjs/passport';
+import { AuthController } from './use-cases/login/auth.controller';
 
 @Module({
+  controllers: [AuthController],
   imports: [
     UsersModule,
+    PassportModule,
     JwtModule.register({
       secret: authConfig.secret,
       signOptions: {

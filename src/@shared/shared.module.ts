@@ -22,4 +22,4 @@ import {
     GenerateIdProvider,
   ],
 })
-export class SharedModuke {}
+export class SharedModule {}
