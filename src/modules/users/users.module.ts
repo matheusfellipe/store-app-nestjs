@@ -6,6 +6,7 @@ import { UsersPrismaRepository } from './repository/implementations/users.prisma
 import { CreateUserController } from './useCases/create-user/create-user.controller';
 import { CreateUserUseCase } from './useCases/create-user/create-user.usecase';
 import { GetUserByEmailUseCase } from './useCases/get-user/get-user.usecase';
+import { EncryptProvider } from 'src/@shared/providers';
 
 @Module({
   controllers: [CreateUserController],
@@ -14,6 +15,8 @@ import { GetUserByEmailUseCase } from './useCases/get-user/get-user.usecase';
     UsersMemoryRepository,
     UsersPrismaRepository,
     CreateUserUseCase,
+    EncryptProvider,
+    GetUserByEmailUseCase,
   ],
   exports: [UsersPrismaRepository, GetUserByEmailUseCase],
 })

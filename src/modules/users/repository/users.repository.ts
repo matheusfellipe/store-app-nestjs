@@ -3,5 +3,5 @@ import { UsersEntity } from '../entities/users.entity';
 
 export interface IUserRepository {
   findByEmail(email: string): Promise<UsersEntity | null>;
-  save(data: UsersEntity): Promise<UsersEntity>;
+  save(data: UsersEntity, password: string): Promise<UsersEntity>;
 }
