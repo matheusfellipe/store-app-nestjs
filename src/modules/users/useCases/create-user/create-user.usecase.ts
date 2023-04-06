@@ -3,10 +3,14 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDTO } from '../../dto/create-user.dto';
 // import { UsersMemoryRepository } from '../repository/implementations/users.memory.repository';
 import { UsersPrismaRepository } from '../../repository/implementations/users.prisma.repository';
+import { EncryptProvider } from 'src/@shared/providers';
 
 @Injectable()
 export class CreateUserUseCase {
-  constructor(private userRepository: UsersPrismaRepository) {}
+  constructor(
+    private userRepository: UsersPrismaRepository,
+    private encryptProvider: EncryptProvider,
+  ) {}
 
   async execute(input: CreateUserDTO) {
     // eslint-disable-next-line no-console
@@ -16,7 +20,8 @@ export class CreateUserUseCase {
     if (existUser) {
       throw new Error('User already exists!');
     }
-    const user = await this.userRepository.save(input);
+    const password = await this.encryptProvider.encrypt(input.password, 13);
+    const user = await this.userRepository.save(input, password);
     return user;
   }
 }
